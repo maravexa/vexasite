@@ -4,7 +4,7 @@ date = 2026-02-23
 description = "How Unlearning the Lessons of a High-Control Group Shaped My Path in AI Security"
 +++
 
-#Data Fortress to Open Source: How Unlearning the Lessons of a High-Control Group Shaped My Path in AI Security
+# How Unlearning the Lessons of a High-Control Group Shaped My Path in AI Security
 
 ## From Information Fortress to Open Source
 
