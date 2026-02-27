@@ -5,7 +5,7 @@ description = "About this site and its author."
 
 ## About me
 
-I work in security, observability, and automation — and I'm currently in the process of supercharging all three with AI. I'm interested in what these systems can do, how they can be broken, and how to build them so they're hard to compromise. I come to that last question with more firsthand experience than most. It's a long story. There's a blog for that.
+I work in security, observability, and automation — and I'm currently in the process of supercharging all three with AI. I'm interested in what these systems can do, how they can be broken, and how to build them so they're hard to compromise. I come to that last question with more firsthand experience than most. It's a long story. There's a [blog](https://maravexa.com/blog/data-fortress) for that.
 
 ## About this site
 
@@ -20,8 +20,8 @@ The design goals:
 - Readable by humans and AI alike
 - Easy to maintain: blog posts are plain Markdown files
 
-The source is available on [GitHub](https://github.com/yourname/maravexa).
+The source is available on [GitHub](https://github.com/maravexa/vexasite).
 
 ## Contact
 
-The best way to reach me is [email@example.com](mailto:email@example.com).
+The best way to reach me is [me@maravexa.com](mailto:me@maravexa.com).
