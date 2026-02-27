@@ -49,7 +49,7 @@ Inline code looks like `this`. A fenced block:
 
 ```rust
 fn main() {
-    println!("Hello, maravexa.us!");
+    println!("Hello, maravexa.com!");
 }
 ```
 

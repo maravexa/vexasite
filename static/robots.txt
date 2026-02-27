@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maravexa.us/sitemap.xml
+Sitemap: https://maravexa.com/sitemap.xml

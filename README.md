@@ -1,4 +1,4 @@
-# maravexa.us
+# maravexa.com
 
 Personal website built with [Zola](https://www.getzola.org/).
 
