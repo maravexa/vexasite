@@ -13,6 +13,9 @@ brew install zola
 # Arch Linux
 pacman -S zola
 
+# Ubuntu
+snap install zola --edge
+
 # Or download a binary from https://github.com/getzola/zola/releases
 ```
 
