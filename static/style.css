@@ -1,0 +1,391 @@
+/* ============================================================
+   maravexa.us — stylesheet
+   Goals: fast, accessible, high-contrast, responsive,
+          two-column on wide screens (text | images)
+   ============================================================ */
+
+/* --- Custom properties ------------------------------------ */
+:root {
+  --bg:       #ffffff;
+  --fg:       #111111;
+  --muted:    #555555;
+  --border:   #dddddd;
+  --accent:   #1a5fb4;   /* accessible blue, WCAG AA on white */
+  --accent-v: #6b2fbe;   /* visited links */
+  --code-bg:  #f4f4f4;
+  --max-w:    68ch;
+  --img-col:  260px;
+  --gap:      1.5rem;
+  --radius:   4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:      #0f0f0f;
+    --fg:      #ebebeb;
+    --muted:   #999999;
+    --border:  #333333;
+    --accent:  #7ab3f5;
+    --accent-v:#c39af7;
+    --code-bg: #1e1e1e;
+  }
+}
+
+/* Explicit high-contrast media query support */
+@media (forced-colors: active) {
+  :root {
+    --accent: LinkText;
+  }
+}
+
+/* --- Reset & base ----------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: 0 var(--gap);
+}
+
+/* --- Site wrapper ----------------------------------------- */
+.site-wrap {
+  max-width: calc(var(--max-w) + var(--img-col) + var(--gap) * 2);
+  margin: 0 auto;
+}
+
+/* --- Header ----------------------------------------------- */
+site-header {
+  display: block;
+  padding: 2rem 0 1.5rem;
+  border-bottom: 2px solid var(--fg);
+  margin-bottom: 2.5rem;
+}
+
+site-header a {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+site-header a:hover { color: var(--accent); }
+
+nav {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.2rem;
+}
+
+nav a {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* --- Main content ----------------------------------------- */
+main {
+  padding-bottom: 4rem;
+}
+
+/* --- Page title ------------------------------------------- */
+.page-title {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.page-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-family: 'Courier New', 'Courier', monospace;
+  margin-bottom: 2rem;
+}
+
+/* --- Article / two-column grid ---------------------------- */
+/*
+  On wide screens, article becomes a two-column grid:
+    col 1 (text): flexible, up to --max-w wide
+    col 2 (images): fixed --img-col wide
+
+  Every block-level text element explicitly sits in col 1.
+  Images (via shortcode) explicitly sit in col 2.
+
+  On small screens: single column, images flow inline.
+*/
+
+article {
+  display: block;  /* single column default */
+}
+
+/* Typography inside articles */
+article p,
+article h1,
+article h2,
+article h3,
+article h4,
+article ul,
+article ol,
+article blockquote,
+article pre,
+article table,
+article hr,
+article .note,
+article .warn {
+  max-width: var(--max-w);
+}
+
+article h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; }
+article h3 { font-size: 1.05rem; margin: 1.5rem 0 0.4rem; }
+article p  { margin-bottom: 1rem; }
+article ul,
+article ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+article li { margin-bottom: 0.3rem; }
+
+article hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* --- Wide-screen two-column layout ------------------------ */
+@media (min-width: 860px) {
+  article {
+    display: grid;
+    grid-template-columns: var(--max-w) var(--img-col);
+    column-gap: var(--gap);
+    align-items: start;
+  }
+
+  /* All prose stays in column 1 */
+  article > p,
+  article > h1,
+  article > h2,
+  article > h3,
+  article > h4,
+  article > ul,
+  article > ol,
+  article > blockquote,
+  article > pre,
+  article > table,
+  article > hr,
+  article > .note,
+  article > .warn {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  /* Images go into column 2 */
+  article > .post-img {
+    grid-column: 2;
+    align-self: start;
+    width: 100%;
+  }
+}
+
+/* --- Image styles ----------------------------------------- */
+.post-img {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.post-img picture,
+.post-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.post-img figcaption {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* On small screens, images get a reasonable max-width */
+@media (max-width: 859px) {
+  .post-img {
+    max-width: 480px;
+    margin: 1rem 0;
+  }
+}
+
+/* --- Links ------------------------------------------------ */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:visited { color: var(--accent-v); }
+a:hover   { text-decoration: none; }
+
+/* --- Blockquote ------------------------------------------- */
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 0.2rem 0 0.2rem 1rem;
+  color: var(--muted);
+  margin: 1.2rem 0;
+  font-style: italic;
+}
+
+/* --- Code ------------------------------------------------- */
+code {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  max-width: var(--max-w);
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.84rem;
+}
+
+/* --- Tables ----------------------------------------------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.7rem;
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+}
+
+/* --- Callout boxes ---------------------------------------- */
+.note, .warn {
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  margin: 1.2rem 0;
+  font-size: 0.9rem;
+}
+
+.note { background: var(--code-bg); border-left: 3px solid var(--accent); }
+.warn { background: #fff8e6; border-left: 3px solid #c97000; color: #3a2600; }
+
+@media (prefers-color-scheme: dark) {
+  .warn { background: #2a1f00; color: #ffd980; }
+}
+
+/* --- Blog post list --------------------------------------- */
+.post-list {
+  list-style: none;
+  padding: 0;
+  max-width: var(--max-w);
+}
+
+.post-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.post-list li:last-child { border-bottom: none; }
+
+.post-list a {
+  font-size: 1.05rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.post-list a:hover { color: var(--accent); text-decoration: underline; }
+
+.post-list time {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: 'Courier New', monospace;
+}
+
+.post-list p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+  max-width: none;
+}
+
+/* --- Footer ----------------------------------------------- */
+site-footer {
+  display: block;
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0 2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: 'Courier New', monospace;
+  max-width: calc(var(--max-w) + var(--img-col) + var(--gap) * 2);
+  margin: 0 auto;
+}
+
+/* --- Focus styles (accessibility) ------------------------- */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --- Skip link (screen readers / keyboard nav) ------------ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  z-index: 999;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus { top: 0; }

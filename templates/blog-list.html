@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">{{ section.title }}</h1>
+{% if section.description %}
+<p style="color: var(--muted); margin-bottom: 1.5rem; max-width: var(--max-w);">
+  {{ section.description }}
+</p>
+{% endif %}
+
+{% if paginator %}
+  {% set pages = paginator.pages %}
+{% else %}
+  {% set pages = section.pages %}
+{% endif %}
+
+{% if pages %}
+<ul class="post-list">
+  {% for page in pages %}
+  <li>
+    <a href="{{ page.permalink }}">{{ page.title }}</a>
+    <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+      {{ page.date | date(format="%B %-d, %Y") }}
+    </time>
+    {% if page.description %}
+    <p>{{ page.description }}</p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+{# Pagination links #}
+{% if paginator %}
+<nav aria-label="Post pagination"
+     style="display:flex; gap:1rem; margin-top:2rem;
+            font-family:'Courier New',monospace; font-size:0.85rem;">
+  {% if paginator.previous %}
+  <a href="{{ paginator.previous }}">← Newer</a>
+  {% endif %}
+  {% if paginator.next %}
+  <a href="{{ paginator.next }}">Older →</a>
+  {% endif %}
+</nav>
+{% endif %}
+
+{% else %}
+<p style="color: var(--muted);">No posts yet. Check back soon.</p>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">Tags</h1>
+
+<ul class="post-list">
+  {% for term in terms %}
+  <li>
+    <a href="{{ term.permalink }}">
+      #{{ term.name }}
+    </a>
+    <span style="color: var(--muted); font-family: 'Courier New', monospace; font-size: 0.82rem;">
+      {{ term.pages | length }} post{% if term.pages | length != 1 %}s{% endif %}
+    </span>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

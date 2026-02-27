@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+  {{ section.content | safe }}
+</article>
+
+{# Show the 5 most recent blog posts on the homepage #}
+{% set blog = get_section(path="blog/_index.md") %}
+{% if blog.pages %}
+<section aria-labelledby="recent-posts-heading" style="margin-top: 2.5rem;">
+  <h2 id="recent-posts-heading"
+      style="font-family: 'Courier New', monospace; font-size: 1rem;
+             text-transform: uppercase; letter-spacing: 0.08em;
+             color: var(--muted); margin-bottom: 1rem;">
+    Recent Posts
+  </h2>
+  <ul class="post-list">
+    {% for page in blog.pages | slice(end=5) %}
+    <li>
+      <a href="{{ page.permalink }}">{{ page.title }}</a>
+      <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+        {{ page.date | date(format="%B %-d, %Y") }}
+      </time>
+      {% if page.description %}
+      <p>{{ page.description }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% if blog.pages | length > 5 %}
+  <p><a href="/blog/">All posts →</a></p>
+  {% endif %}
+</section>
+{% endif %}
+{% endblock content %}

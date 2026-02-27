@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maravexa.us/sitemap.xml

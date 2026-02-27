@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+  {# Post header — sits in col 1 on wide screens #}
+  <header>
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-meta">
+      <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+        {{ page.date | date(format="%B %-d, %Y") }}
+      </time>
+      {% if page.taxonomies.tags %}
+        · {% for tag in page.taxonomies.tags %}
+          <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
+             style="color:var(--muted);">#{{ tag }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+      {% endif %}
+    </p>
+  </header>
+
+  {# Markdown content renders here — images via shortcode slot into col 2 #}
+  {{ page.content | safe }}
+</article>
+
+{# Prev / Next post navigation #}
+{% if page.earlier or page.later %}
+<nav aria-label="Post navigation"
+     style="display:flex; justify-content:space-between; gap:1rem;
+            margin-top:3rem; padding-top:1.5rem;
+            border-top:1px solid var(--border);
+            font-size:0.88rem; max-width:var(--max-w);">
+  <div>
+    {% if page.later %}
+    <a href="{{ page.later.permalink }}">← {{ page.later.title }}</a>
+    {% endif %}
+  </div>
+  <div style="text-align:right;">
+    {% if page.earlier %}
+    <a href="{{ page.earlier.permalink }}">{{ page.earlier.title }} →</a>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}
+
+<p style="margin-top:2rem; font-size:0.82rem; color:var(--muted);
+          max-width:var(--max-w);">
+  <a href="/blog/">← All posts</a>
+</p>
+{% endblock content %}

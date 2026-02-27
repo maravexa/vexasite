@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">#{{ term.name }}</h1>
+<p class="page-meta">
+  {{ term.pages | length }} post{% if term.pages | length != 1 %}s{% endif %}
+</p>
+
+<ul class="post-list">
+  {% for page in term.pages %}
+  <li>
+    <a href="{{ page.permalink }}">{{ page.title }}</a>
+    <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+      {{ page.date | date(format="%B %-d, %Y") }}
+    </time>
+    {% if page.description %}
+    <p>{{ page.description }}</p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<p style="margin-top: 1.5rem; font-size: 0.82rem;">
+  <a href="/tags/">← All tags</a>
+</p>
+{% endblock content %}

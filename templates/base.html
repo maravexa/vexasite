@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    {%- if page.title -%}
+      {{ page.title }} — {{ config.title }}
+    {%- elif section.title -%}
+      {{ section.title }} — {{ config.title }}
+    {%- else -%}
+      {{ config.title }}
+    {%- endif -%}
+  </title>
+
+  <meta name="description" content="
+    {%- if page.description -%}
+      {{ page.description }}
+    {%- elif section.description -%}
+      {{ section.description }}
+    {%- else -%}
+      {{ config.description }}
+    {%- endif -%}
+  ">
+
+  <meta name="author" content="{{ config.extra.author }}">
+
+  {# Open Graph — helps social sharing and AI scrapers #}
+  <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="
+    {%- if page.title -%}{{ page.title }}
+    {%- else -%}{{ config.title }}
+    {%- endif -%}
+  ">
+  <meta property="og:description" content="
+    {%- if page.description -%}{{ page.description }}
+    {%- else -%}{{ config.description }}
+    {%- endif -%}
+  ">
+  <meta property="og:url" content="{{ current_url | safe }}">
+  <meta property="og:site_name" content="{{ config.title }}">
+
+  {# RSS feed discovery #}
+  <link rel="alternate" type="application/rss+xml"
+        title="{{ config.title }} RSS"
+        href="{{ get_url(path='rss.xml') }}">
+
+  {# Favicon — drop a favicon.ico in /static to activate #}
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  {# Single stylesheet — no render-blocking, no external requests #}
+  <link rel="stylesheet" href="/style.css">
+
+  {# Canonical URL #}
+  <link rel="canonical" href="{{ current_url | safe }}">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="site-wrap">
+    <site-header>
+      <a href="/">{{ config.title }}</a>
+      <nav aria-label="Site navigation">
+        <a href="/"
+           {% if current_path == "/" %}aria-current="page"{% endif %}>
+          Home
+        </a>
+        <a href="/blog/"
+           {% if current_path is starting_with("/blog") %}aria-current="page"{% endif %}>
+          Blog
+        </a>
+        <a href="/about/"
+           {% if current_path is starting_with("/about") %}aria-current="page"{% endif %}>
+          About
+        </a>
+        <a href="/rss.xml" aria-label="RSS feed">RSS</a>
+      </nav>
+    </site-header>
+
+    <main id="main">
+      {% block content %}{% endblock content %}
+    </main>
+  </div>
+
+  <site-footer>
+    <p>© {{ now() | date(format="%Y") }} {{ config.extra.author }} ·
+       <a href="/rss.xml">RSS</a> ·
+       Built with <a href="https://www.getzola.org">Zola</a>
+    </p>
+  </site-footer>
+
+</body>
+</html>

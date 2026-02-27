@@ -1,0 +1,40 @@
+{#
+  img shortcode — use in Markdown like:
+    {{ img(src="photo.webp", alt="Description of image") }}
+    {{ img(src="photo.webp", alt="Description", caption="Optional caption") }}
+    {{ img(src="photo.webp", alt="Description", w=800, h=533) }}
+
+  Place images in /static/img/ and reference as src="photo.webp"
+  For WebP with JPEG fallback, have both photo.webp and photo.jpg in /static/img/
+  If only one format exists, the <source> tag is still harmless.
+#}
+
+{%- set src_path = src | trim -%}
+{%- set base = src_path | replace(from=".webp", to="") | replace(from=".jpg", to="") | replace(from=".jpeg", to="") | replace(from=".png", to="") -%}
+
+{%- if src_path is ending_with(".webp") -%}
+  {%- set webp_src = "/img/" ~ src_path -%}
+  {%- set jpg_src  = "/img/" ~ base ~ ".jpg" -%}
+{%- elif src_path is ending_with(".jpg") or src_path is ending_with(".jpeg") -%}
+  {%- set webp_src = "/img/" ~ base ~ ".webp" -%}
+  {%- set jpg_src  = "/img/" ~ src_path -%}
+{%- else -%}
+  {%- set webp_src = "/img/" ~ src_path -%}
+  {%- set jpg_src  = "/img/" ~ src_path -%}
+{%- endif -%}
+
+<figure class="post-img">
+  <picture>
+    <source srcset="{{ webp_src }}" type="image/webp">
+    <img
+      src="{{ jpg_src }}"
+      alt="{{ alt | default(value='') }}"
+      {% if w %}width="{{ w }}"{% endif %}
+      {% if h %}height="{{ h }}"{% endif %}
+      loading="lazy"
+      decoding="async">
+  </picture>
+  {%- if caption %}
+  <figcaption>{{ caption }}</figcaption>
+  {%- endif %}
+</figure>
