@@ -50,7 +50,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
 
   {# Single stylesheet — no render-blocking, no external requests #}
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=3">
 
   {# Canonical URL #}
   <link rel="canonical" href="{{ current_url | safe }}">
@@ -59,7 +59,7 @@
   <a href="#main" class="skip-link">Skip to content</a>
 
   <div class="site-wrap">
-    <site-header>
+    <header class="site-header">
       <a href="/">{{ config.title }}</a>
       <nav aria-label="Site navigation">
         <a href="/"
@@ -76,19 +76,19 @@
         </a>
         <a href="/rss.xml" aria-label="RSS feed">RSS</a>
       </nav>
-    </site-header>
+    </header>
 
     <main id="main">
       {% block content %}{% endblock content %}
     </main>
   </div>
 
-  <site-footer>
+  <footer class="site-footer">
     <p>© {{ now() | date(format="%Y") }} {{ config.extra.author }} ·
        <a href="/rss.xml">RSS</a> ·
        Built with <a href="https://www.getzola.org">Zola</a>
     </p>
-  </site-footer>
+  </footer>
 
 </body>
 </html>
