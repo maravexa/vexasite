@@ -24,5 +24,6 @@ The source is available on [GitHub](https://github.com/maravexa/vexasite).
 
 ## Contact
 
-Email: [me@maravexa.com](mailto:me@maravexa.com).
+Email: [me@maravexa.com](mailto:me@maravexa.com)
+
 Github: [https://github.com/maravexa](https://github.com/maravexa)
