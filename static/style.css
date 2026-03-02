@@ -10,8 +10,8 @@
   --fg:       #111111;
   --muted:    #555555;
   --border:   #dddddd;
-  --accent:   #1a5fb4;   /* accessible blue, WCAG AA on white */
-  --accent-v: #6b2fbe;   /* visited links */
+  --accent:   #005ce6;   /* accessible blue, WCAG AA on white */
+  --accent-v: #c71585;   /* visited links */
   --code-bg:  #f4f4f4;
   --max-w:    68ch;
   --img-col:  260px;
@@ -25,8 +25,8 @@
     --fg:      #ebebeb;
     --muted:   #999999;
     --border:  #333333;
-    --accent:  #7ab3f5;
-    --accent-v:#c39af7;
+    --accent:  #00b4ff;
+    --accent-v:#f020b0;
     --code-bg: #1e1e1e;
   }
 }
