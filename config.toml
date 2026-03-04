@@ -20,4 +20,7 @@ name = "tags"
 feed = true
 
 [extra]
-author = "Mara Vexa"
+author       = "Mara Vexa"
+author_title = "Security Engineer"
+author_email = "me@maravexa.com"
+author_github = "https://github.com/maravexa"

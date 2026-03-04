@@ -40,6 +40,26 @@
   ">
   <meta property="og:url" content="{{ current_url | safe }}">
   <meta property="og:site_name" content="{{ config.title }}">
+  {%- if page.extra.og_image -%}
+  <meta property="og:image" content="{{ get_url(path=page.extra.og_image) | safe }}">
+  {%- endif -%}
+
+  {# Twitter / X Card — controls link previews on X and in chat apps #}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="
+    {%- if page.title -%}{{ page.title }}
+    {%- else -%}{{ config.title }}
+    {%- endif -%}
+  ">
+  <meta name="twitter:description" content="
+    {%- if page.description -%}{{ page.description }}
+    {%- elif section.description -%}{{ section.description }}
+    {%- else -%}{{ config.description }}
+    {%- endif -%}
+  ">
+  {%- if page.extra.og_image -%}
+  <meta name="twitter:image" content="{{ get_url(path=page.extra.og_image) | safe }}">
+  {%- endif -%}
 
   {# RSS feed discovery #}
   <link rel="alternate" type="application/rss+xml"
@@ -54,6 +74,9 @@
 
   {# Canonical URL #}
   <link rel="canonical" href="{{ current_url | safe }}">
+
+  {# Page-specific head content (structured data, etc.) #}
+  {% block extra_head %}{% endblock extra_head %}
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>

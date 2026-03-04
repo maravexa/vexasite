@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article>
+<article{% if current_path == "/about/" %} itemscope itemtype="https://schema.org/Person"{% endif %}>
+  {% if current_path == "/about/" %}
+  {# Hidden Person structured data for the About page #}
+  <meta itemprop="name" content="{{ config.extra.author }}">
+  <meta itemprop="url" content="{{ config.base_url }}">
+  <meta itemprop="email" content="{{ config.extra.author_email }}">
+  <meta itemprop="sameAs" content="{{ config.extra.author_github }}">
+  <meta itemprop="jobTitle" content="{{ config.extra.author_title }}">
+  {% endif %}
   <header>
     <h1 class="page-title">{{ page.title }}</h1>
     {% if page.description %}
