@@ -1,3 +1,6 @@
+# maravexa.com robots.txt
+# Welcome, crawlers. Everything here is meant to be read.
+
 User-agent: *
 Allow: /
 

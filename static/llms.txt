@@ -1,0 +1,15 @@
+# maravexa.com
+
+## About
+
+Mara Vexa is a security, observability, and automation engineer exploring the intersection of these disciplines with AI. This site contains technical writing, incident reports, and philosophical essays on intelligence, security, and systems.
+
+## Blog Posts
+
+- [Data Fortress to Open Source](https://maravexa.com/blog/data-fortress/): How personal experience in a high-control group shaped a career in AI security. Draws parallels between adversarial prompting techniques and human manipulation.
+- [Open Brain Surgery: A Guide to API Shimming in Production](https://maravexa.com/blog/api-shim/): Technical incident report on building a FastAPI translation layer to bridge incompatible APIs during an emergency production migration.
+- [The Map Is Not The Treasure](https://maravexa.com/blog/real-wealth/): A philosophical essay on wealth, illth, and why money is a map that's missing half the math.
+
+## Key Topics
+
+AI security, LLM vulnerability scanning, red teaming, prompt injection, adversarial AI, production incident response, API shimming, observability, automation, open source, Linux, AMD/ROCm

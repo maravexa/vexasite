@@ -1,25 +1,42 @@
-# Cloudflare Pages _headers file
-# Sets optimal cache and security headers for a static site
+# Security headers for maravexa.com
+# Place this file at: static/_headers (Zola copies it to public/_headers on build)
+# Cloudflare Pages reads it automatically: https://developers.cloudflare.com/pages/configuration/headers/
 
 /*
+  # --- Transport Security ---
+  # Force HTTPS for 1 year, including subdomains. Preload-ready.
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # --- Content Security Policy ---
+  # Tight CSP for a zero-JS static site.
+  # 'unsafe-inline' on style-src is required because Zola's syntax highlighter
+  # generates inline style attributes on <span> elements in code blocks.
+  # If you switch to class-based highlighting (highlight_themes_css in config.toml),
+  # you can remove 'unsafe-inline' and tighten this to just 'self'.
+  Content-Security-Policy: default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+
+  # --- Standard Hardening ---
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
-  Referrer-Policy: same-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Referrer-Policy: strict-origin-when-cross-origin
 
-# Long cache for fingerprinted assets
-/style.css
+  # --- Permissions Policy ---
+  # Deny all browser APIs we don't use. interest-cohort opts out of FLoC/Topics.
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), bluetooth=(), browsing-topics=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), identity-credentials-get=(), idle-detection=(), interest-cohort=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), publickey-credentials-create=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), speaker-selection=(), storage-access=(), sync-xhr=(), usb=(), web-share=(), window-management=(), xr-spatial-tracking=()
+
+  # --- Cross-Origin Isolation ---
+  Cross-Origin-Resource-Policy: same-origin
+  Cross-Origin-Opener-Policy: same-origin
+
+# Static assets get aggressive caching (CSS, images, fonts)
+# Zola hashes asset filenames, so these are safe to cache long-term.
+/static/*
   Cache-Control: public, max-age=31536000, immutable
 
-/img/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Short cache for HTML pages so updates propagate quickly
-/*.html
+# Feeds and sitemaps should revalidate frequently
+/rss.xml
   Cache-Control: public, max-age=3600, must-revalidate
-
-/
+/sitemap.xml
   Cache-Control: public, max-age=3600, must-revalidate
+/robots.txt
+  Cache-Control: public, max-age=86400, must-revalidate
