@@ -7,6 +7,10 @@ description ="How a corrupted artifact server, a broken backup, an incompatible 
 tags = ["ops"]
 +++
 
+**TL;DR:** Our artifact server's filesystem corrupted, the snapshot backup turned out to have a silently broken binary, and the replacement server spoke an incompatible API. With production rebuilds failing and a week until the next release window, I wrote a 400-line FastAPI shim that sat on the old server's DNS, translated requests between the two API formats in both directions, and bought us nine clean days until the proper migration shipped.
+
+---
+
 There's a particular flavor of dread that comes at 2 AM when a production system starts failing. It's worse when you already know the cause, worse still when you've known about it for weeks, and the fix was "scheduled for next sprint." This is the story of how a dying artifact server, a hard API incompatibility, and a one-week window forced me to perform surgery on a running system — without stopping the patient's heart.
 
 ## The Patient: A Very Tired Artifact Server
@@ -29,7 +33,7 @@ We had one. Taken before the filesystem corruption, verified at the time, sittin
 
 It failed.
 
-Not with a filesystem error — the snapshot's storage was clean. Something else was wrong. After some digging, the culprit appeared to be in the artifact server binary itself, not the data it was serving. Our best theory, and we never fully confirmed it, was a date or time library hitting an edge case. The software was old enough that this was plausible: a dependency that worked fine when the snapshot was taken, but whose behavior had drifted into broken territory somewhere in the interim — a year-2038-style overflow in a 32-bit timestamp field, or a daylight saving time boundary that the library mishandled, or simply a relative date calculation that assumed "now" would always fall within a range that it no longer did.
+Not with a filesystem error — the snapshot's storage was clean. Something else was wrong. After some digging, the culprit appeared to be in the artifact server binary itself, not the data it was serving. Our best theory — never fully confirmed — was a date or time library hitting an edge case. The software was old enough that this was plausible: a dependency that worked fine when the snapshot was taken, but whose behavior had drifted into broken territory in the interim. A year-2038-style overflow in a 32-bit timestamp field, a daylight saving boundary the library mishandled, a relative date calculation that assumed "now" would always fall within a range it no longer did. Pick your favorite; the effect was the same.
 
 Whatever the cause, the snapshot was useless. The filesystem was fine. The binary was not. And since this was an EOL artifact server, there was no patch coming and no supported upgrade path — the vendor had long since moved on.
 
@@ -97,7 +101,7 @@ async def get_artifact(name: str, version: str, format: str, request: Request):
     )
 ```
 
-The manifest endpoint was messier. The old server's JSON format had some genuinely unusual structural decisions — deep nesting, non-standard conventions, the kind of thing that grows organically in a codebase over years and becomes load-bearing before anyone realizes it. I won't get into the specifics since that format is proprietary, but suffice to say the translation logic was the most painstaking part of the whole exercise. Empty arrays that needed to be null in one direction, required fields that the old system expected even when absent, subtle differences in how version identifiers were represented.
+The manifest endpoint was messier. The old server's JSON format had some genuinely unusual structural decisions — deep nesting, non-standard conventions, the kind of thing that grows organically in a codebase over years and becomes load-bearing before anyone realizes it. I won't get into the specifics since that format is proprietary, but the translation logic was the most painstaking part of the whole exercise: empty arrays that needed to be null in one direction, required fields that the old system expected even when absent, subtle differences in how version identifiers were represented.
 
 Each of these got its own translation function, tested against captured request/response pairs from the old server's logs before we'd lost confidence in it.
 
@@ -146,7 +150,7 @@ Once that deployed, we turned off the shim. It had done its job and was no longe
 
 There's something clarifying about a genuine emergency. The ideal solution — update the production client, migrate cleanly, test thoroughly — wasn't available. What was available was a week, a functional new server, and Python. Sometimes that's enough.
 
-The system never knew it was on the table.
+The patient never knew it was on the table.
 
 ---
 
