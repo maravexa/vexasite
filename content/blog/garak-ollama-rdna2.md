@@ -4,7 +4,7 @@ date = 2025-01-15
 description = "A practical guide to LLM vulnerability scanning with Garak and Ollama on AMD hardware with ROCm 6.3 — because constraint is the mother of flexibility."
 
 [taxonomies]
-tags = ["security", "llm", "red-teaming", "amd", "rocm"]
+tags = ["security", "ai"]
 +++
 
 {{ img(src="PLACEHOLDER.webp", alt="PLACEHOLDER — replace with hero image alt text", caption="PLACEHOLDER — replace with hero image caption or remove caption param", w=800, h=533) }}

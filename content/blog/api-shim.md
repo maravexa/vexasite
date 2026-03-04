@@ -2,6 +2,9 @@
 title = "Open Brain Surgery: A Guide to API Shimming in Production"
 date = 2026-02-27
 description ="How a corrupted artifact server, a broken backup, an incompatible API, and a ticking clock forced an emergency production migration — and why a 400-line FastAPI shim was the right tool for the job."
+
+[taxonomies]
+tags = ["ops"]
 +++
 
 There's a particular flavor of dread that comes at 2 AM when a production system starts failing. It's worse when you already know the cause, worse still when you've known about it for weeks, and the fix was "scheduled for next sprint." This is the story of how a dying artifact server, a hard API incompatibility, and a one-week window forced me to perform surgery on a running system — without stopping the patient's heart.
