@@ -2,6 +2,9 @@
 title = "The Map Is Not The Treasure: A Field Guide to Wealth You Can Actually Use"
 date = 2026-03-01
 description = "Money is a map, not the territory — and we've been navigating by a map that's missing half the math. A field guide to wealth, illth, and why the tokens are imaginary."
+
+[taxonomies]
+tags = ["philosophy"]
 +++
 
 Here's a thing that will ruin economics for you: money is not wealth.
