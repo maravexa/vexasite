@@ -1,6 +1,6 @@
 +++
 title = "Red Teaming on a Budget: Garak + Ollama + AMD RDNA2"
-date = 2025-01-15
+date = 2026-03-03
 description = "A practical guide to LLM vulnerability scanning with Garak and Ollama on AMD hardware with ROCm 6.3 — because constraint is the mother of flexibility."
 
 [taxonomies]
