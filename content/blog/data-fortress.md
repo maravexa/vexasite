@@ -7,6 +7,9 @@ description = "How Unlearning the Lessons of a High-Control Group Shaped My Path
 tags = ["philosophy", "ai"]
 +++
 
+{{ img(src="data-fortress-hero.webp", alt="Dark cyberpunk fortress with red and copper accents", w=1200, h=672) }}
+
+
 ## From Information Fortress to Open Source
 
 For most of my life, my security model was simple: don't have outputs. No stated opinions, no visible beliefs, no detectable interior. If there's nothing to parse, there's nothing to exploit. It was, in the technical sense, a zero-trust architecture. In every other sense, it was exhausting.

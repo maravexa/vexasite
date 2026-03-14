@@ -7,6 +7,8 @@ description = "Money is a map, not the territory — and we've been navigating b
 tags = ["philosophy"]
 +++
 
+{{ img(src="real-wealth-hero.webp", alt="Treasure chest overflowing with gold", w=1200, h=672) }}
+
 Here's a thing that will ruin economics for you: money is not wealth.
 
 I know. I know. Bear with me.
