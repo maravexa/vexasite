@@ -18,14 +18,11 @@
   {# Hero image — renders above title when page.extra.hero is set #}
   {%- if page.extra.hero %}
   <figure class="post-img post-img-hero">
-    <picture>
-      <source srcset="/img/{{ page.extra.hero }}" type="image/webp">
-      <img
-        src="/img/{{ page.extra.hero | replace(from='.webp', to='.jpg') }}"
-        alt="{{ page.extra.hero_alt | default(value='') }}"
-        loading="lazy"
-        decoding="async">
-    </picture>
+    <img
+      src="/img/{{ page.extra.hero }}"
+      alt="{{ page.extra.hero_alt | default(value='') }}"
+      loading="lazy"
+      decoding="async">
   </figure>
   {%- endif %}
 
