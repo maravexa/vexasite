@@ -15,6 +15,20 @@
     <meta itemprop="url" content="{{ config.base_url }}">
   </span>
 
+  {# Hero image — renders above title when page.extra.hero is set #}
+  {%- if page.extra.hero %}
+  <figure class="post-img post-img-hero">
+    <picture>
+      <source srcset="/img/{{ page.extra.hero }}" type="image/webp">
+      <img
+        src="/img/{{ page.extra.hero | replace(from='.webp', to='.jpg') }}"
+        alt="{{ page.extra.hero_alt | default(value='') }}"
+        loading="lazy"
+        decoding="async">
+    </picture>
+  </figure>
+  {%- endif %}
+
   {# Post header — sits in col 1 on wide screens #}
   <header>
     <h1 class="page-title" itemprop="headline">{{ page.title }}</h1>
