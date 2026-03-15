@@ -19,14 +19,11 @@
   {% for page in pages %}
   <li>
     <a href="{{ page.permalink }}">{{ page.title }}</a>
-    <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">
-      {{ page.date | date(format="%B %-d, %Y") }}
-    </time>
+    <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format="%B %-d, %Y") }}</time>
     {% if page.taxonomies.tags %}
-    <span class="post-tags">
+    · <span class="post-tags">
       {% for tag in page.taxonomies.tags %}
-      <a href="/tags/{{ tag | slugify }}/"
-         class="post-tag">#{{ tag }}</a>
+      <a href="/tags/{{ tag | slugify }}/" class="post-tag">#{{ tag }}</a>{% if not loop.last %} {% endif %}
       {% endfor %}
     </span>
     {% endif %}
