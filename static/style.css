@@ -124,14 +124,11 @@ main {
   margin-bottom: 2rem;
 }
 
-/* --- Article / two-column grid ---------------------------- */
+/* --- Article / single fluid column ------------------------ */
 /*
-  On wide screens, article becomes a two-column grid:
-    col 1 (text): flexible, up to --max-w wide
-    col 2 (images): fixed --img-col wide
-
-  Every block-level text element explicitly sits in col 1.
-  Images (via shortcode) explicitly sit in col 2.
+  On wide screens, article is a single fluid column filling
+  the full site-wrap width. Non-hero images float right using
+  --img-col width so they sit beside text without a grid.
 
   On small screens: single column, images flow inline.
 */
@@ -154,7 +151,7 @@ article table,
 article hr,
 article .note,
 article .warn {
-  max-width: var(--max-w);
+  max-width: 100%;
 }
 
 article h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; }
@@ -170,47 +167,22 @@ article hr {
   margin: 2rem 0;
 }
 
-/* --- Wide-screen two-column layout ------------------------ */
+/* --- Wide-screen layout ----------------------------------- */
 @media (min-width: 860px) {
-  article {
-    display: grid;
-    grid-template-columns: var(--max-w) var(--img-col);
-    column-gap: var(--gap);
-    align-items: start;
-  }
-
-  /* All prose stays in column 1 */
-  article > p,
-  article > h1,
-  article > h2,
-  article > h3,
-  article > h4,
-  article > ul,
-  article > ol,
-  article > blockquote,
-  article > pre,
-  article > table,
-  article > hr,
-  article > .note,
-  article > .warn {
-    grid-column: 1;
-    max-width: 100%;
-  }
-
-  /* Images go into column 2 */
+  /* Non-hero images float right beside text */
   article > .post-img {
-    grid-column: 2;
-    align-self: start;
-    width: 100%;
+    float: right;
+    margin-left: var(--gap);
+    width: var(--img-col);
   }
 
-  /* Code blocks span both columns */
+  /* Code blocks span full width */
   article > pre {
     grid-column: 1 / -1;
     max-width: 100%;
   }
 
-  /* Hero images span both columns */
+  /* Hero images span full width */
   article > .post-img-hero {
     grid-column: 1 / -1;
     width: 100%;
@@ -289,7 +261,7 @@ pre {
   padding: 1rem;
   overflow-x: auto;
   margin-bottom: 1rem;
-  max-width: var(--max-w);
+  max-width: 100%;
 }
 
 pre code {
