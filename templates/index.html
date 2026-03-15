@@ -19,11 +19,9 @@
     {% for page in blog.pages | slice(end=5) %}
     <li>
       <a href="{{ page.permalink }}">{{ page.title }}</a>
-      <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">
-        {{ page.date | date(format="%B %-d, %Y") }}
-      </time>
+      <span class="post-meta"><time datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format="%B %-d, %Y") }}</time>{% if page.taxonomies.tags %} {% for tag in page.taxonomies.tags %}<a href="/tags/{{ tag | slugify }}/" class="post-tag">#{{ tag }}</a>{% if not loop.last %} {% endif %}{% endfor %}{% endif %}</span>
       {% if page.description %}
-      <span class="post-desc">{{ page.description }}</span>
+      <p>{{ page.description }}</p>
       {% endif %}
     </li>
     {% endfor %}
