@@ -324,14 +324,6 @@ th {
 
 .post-list li:last-child { border-bottom: none; }
 
-.post-list a {
-  font-size: 1.05rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--fg);
-}
-
-.post-list a:hover { color: var(--accent); text-decoration: underline; }
 
 .post-list time {
   font-size: 0.78rem;
@@ -348,9 +340,6 @@ th {
   display: block;
 }
 
-.post-tags {
-  display: inline;
-}
 
 .post-tag {
   font-family: 'Courier New', monospace;
