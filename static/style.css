@@ -348,6 +348,18 @@ th {
   display: block;
 }
 
+.post-tags { display: inline; }
+
+.post-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: 0.4rem;
+}
+
+.post-tag:hover { color: var(--accent); text-decoration: underline; }
+
 /* --- Post navigation (prev / next + back to list) --------- */
 .post-nav {
   display: flex;
