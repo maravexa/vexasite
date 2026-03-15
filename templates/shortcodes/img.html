@@ -23,7 +23,7 @@
   {%- set jpg_src  = "/img/" ~ src_path -%}
 {%- endif -%}
 
-<figure class="post-img">
+<figure class="post-img{% if hero %} post-img-hero{% endif %}">
   <picture>
     <source srcset="{{ webp_src }}" type="image/webp">
     <img
