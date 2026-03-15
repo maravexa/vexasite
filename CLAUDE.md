@@ -214,7 +214,7 @@ explicitly requested — the site is intentionally static.
 - Edit Markdown files in `content/` to add or update posts.
 - Add new templates in `templates/` following existing patterns.
 - Extend `static/style.css` using existing CSS custom properties.
-- Update `static/llms.txt` when new posts are added.
+- Update `static/llms.txt` when new posts are added (see procedure below).
 - Add URL redirects to `static/_redirects` when slugs change.
 - Run `zola build` to verify the site builds without errors before committing.
 
@@ -227,6 +227,35 @@ explicitly requested — the site is intentionally static.
 - Use inline `style=` attributes (except what the syntax highlighter emits).
 - Add raw `<img>` tags in content — always use the `{{ img(...) }}` shortcode.
 - Introduce Sass or any CSS preprocessor.
+
+---
+
+## Updating llms.txt
+
+When adding or changing blog posts, regenerate `static/llms.txt` as follows:
+
+1. **Scan** every post directory under `content/blog/` and read its `index.md`.
+2. **Extract** `title`, `description`, and `date` from the TOML frontmatter (between `+++` delimiters).
+3. **Sort** posts by `date` descending (newest first).
+4. **Construct** each post URL from the directory slug: `https://maravexa.com/blog/{slug}/`
+5. **Preserve** the `## About` and `## Key Topics` sections exactly as they appear in the existing file — only regenerate the `## Blog Posts` section.
+6. **Write** the file as UTF-8 with a trailing newline, using this exact format:
+
+```
+# MaraVexa
+
+## About
+Mara Vexa is a security, observability, and automation engineer exploring the intersection of these disciplines with AI. This site contains technical writing, incident reports, and philosophical essays on intelligence, security, and systems.
+
+## Blog Posts
+- [Post Title](https://maravexa.com/blog/slug/): Post description goes here.
+- [Another Post](https://maravexa.com/blog/another-slug/): Another description.
+
+## Key Topics
+AI security, LLM vulnerability scanning, red teaming, prompt injection, adversarial AI, production incident response, API shimming, observability, automation, open source, Linux, AMD/ROCm
+```
+
+Blank lines must separate each `##` section. Each post is a single list item on one line.
 
 ---
 
