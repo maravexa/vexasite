@@ -1,0 +1,15 @@
+# {{ config.title }}
+
+## About
+
+{{ config.extra.llms_about }}
+
+## Blog Posts
+
+{% set blog = get_section(path="blog/_index.md") -%}
+{% for page in blog.pages -%}
+- [{{ page.title }}]({{ page.permalink }}): {{ page.description }}
+{% endfor %}
+## Key Topics
+
+{{ config.extra.llms_topics }}
