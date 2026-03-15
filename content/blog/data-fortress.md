@@ -5,9 +5,12 @@ description = "How Unlearning the Lessons of a High-Control Group Shaped My Path
 
 [taxonomies]
 tags = ["philosophy", "ai"]
+
+[extra]
+hero = "data-fortress-hero.webp"
+hero_alt = "Dark cyberpunk fortress with red and copper accents"
 +++
 
-{{ img(src="data-fortress-hero.webp", alt="Dark cyberpunk fortress with red and copper accents", w=1200, h=672) }}
 
 
 ## From Information Fortress to Open Source
