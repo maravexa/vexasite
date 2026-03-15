@@ -14,7 +14,7 @@
   --accent-v: #c71585;   /* visited links */
   --code-bg:  #f4f4f4;
   --max-w:    68ch;
-  --img-col:  260px;
+  --img-col:  320px;
   --gap:      1.5rem;
   --radius:   4px;
 }
@@ -201,6 +201,25 @@ article hr {
   article > .post-img {
     grid-column: 2;
     align-self: start;
+    width: 100%;
+  }
+
+  /* Code blocks span both columns */
+  article > pre {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+
+  /* Hero images span both columns */
+  article > .post-img-hero {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  article > .post-img-hero img,
+  article > .post-img-hero picture {
+    max-height: 420px;
+    object-fit: cover;
     width: 100%;
   }
 }
