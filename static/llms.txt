@@ -1,0 +1,16 @@
+# MaraVexa
+
+## About
+
+Mara Vexa is a security, observability, and automation engineer exploring the intersection of these disciplines with AI. This site contains technical writing, incident reports, and philosophical essays on intelligence, security, and systems.
+
+## Blog Posts
+
+- [Red Teaming on a Budget: Garak + Ollama + AMD RDNA2](https://maravexa.com/blog/garak-ollama-rdna2/): A practical guide to LLM vulnerability scanning with Garak and Ollama on AMD hardware with ROCm 6.3 — because constraint is the mother of flexibility.
+- [The Map Is Not The Treasure: A Field Guide to Wealth You Can Actually Use](https://maravexa.com/blog/real-wealth/): Money is a map, not the territory — and we've been navigating by a map that's missing half the math. A field guide to wealth, illth, and why the tokens are imaginary.
+- [Open Brain Surgery: A Guide to API Shimming in Production](https://maravexa.com/blog/api-shim/): How a corrupted artifact server, a broken backup, an incompatible API, and a ticking clock forced an emergency production migration — and why a 400-line FastAPI shim was the right tool for the job.
+- [Data Fortress to Open Source: How Unlearning the Lessons of a High-Control Group Shaped My Path in AI Security](https://maravexa.com/blog/data-fortress/): How Unlearning the Lessons of a High-Control Group Shaped My Path in AI Security
+
+## Key Topics
+
+AI security, LLM vulnerability scanning, red teaming, prompt injection, adversarial AI, production incident response, API shimming, observability, automation, open source, Linux, AMD/ROCm
