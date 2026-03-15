@@ -190,7 +190,8 @@ article hr {
 
   article > .post-img-hero img,
   article > .post-img-hero picture {
-    object-fit: contain;
+    max-height: 420px;
+    object-fit: cover;
     width: 100%;
   }
 }
