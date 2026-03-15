@@ -32,7 +32,7 @@ Concretely, this means:
 
 **Writing** — Blog posts are drafted and refined with AI assistance. I write, I prompt, I rewrite, I argue with the output. The final voice is mine because I iterate until it sounds like me, not because I pretend the tools don't exist.
 
-**Image generation** — Most hero images and illustrations are AI-generated using locally hosted models running on my own hardware via ComfyUI. No third-party image API calls, no cloud-rendered art. Screenshotsi, charts, and photos of actual physical work are taken by yours truly — some things still require a human with a camera.
+**Image generation** — Most hero images and illustrations are AI-generated using locally hosted models running on my own hardware via ComfyUI. No third-party image API calls, no cloud-rendered art. Screenshots, charts, and photos of actual physical work are taken by yours truly — some things still require a human with a camera.
 
 **Code** — The website itself, tooling, and various automation scripts are built with AI-assisted code generation, primarily Claude. I review, test, and own everything that ships.
 
