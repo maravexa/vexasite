@@ -194,6 +194,14 @@ article hr {
     object-fit: cover;
     width: 100%;
   }
+
+  /* Full-width images: break out of float, span both columns, preserve aspect ratio */
+  article > .post-img-full {
+    float: none;
+    clear: both;
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 /* --- Image styles ----------------------------------------- */
@@ -208,6 +216,14 @@ article hr {
   height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--border);
+}
+
+.post-img-full img,
+.post-img-full picture {
+  width: auto;
+  max-width: 100%;
+  max-height: 100vh;
+  margin: 0 auto;
 }
 
 .post-img figcaption {
