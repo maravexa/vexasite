@@ -42,6 +42,27 @@
     </p>
   </header>
 
+  {# Table of contents — rendered when show_toc = true in [extra] frontmatter #}
+  {%- if page.extra.show_toc and page.toc %}
+  <nav aria-label="Table of Contents" class="toc">
+    <p class="toc-heading">Contents</p>
+    <ol>
+      {%- for h in page.toc %}
+      <li>
+        <a href="#{{ h.id }}">{{ h.title }}</a>
+        {%- if h.children %}
+        <ol>
+          {%- for child in h.children %}
+          <li><a href="#{{ child.id }}">{{ child.title }}</a></li>
+          {%- endfor %}
+        </ol>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ol>
+  </nav>
+  {%- endif %}
+
   {# Markdown content renders here — images via shortcode slot into col 2 #}
   {{ page.content | safe }}
 </article>
