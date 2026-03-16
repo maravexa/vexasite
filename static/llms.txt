@@ -6,6 +6,7 @@ Mara Vexa is a security, observability, and automation engineer exploring the in
 
 ## Blog Posts
 
+- [Beyond Behavioral Scanning: Augmenting Garak with Mechanistic Persona Monitoring](https://maravexa.com/blog/garak-axis/): Bridging the gap between knowing that an LLM failed a red team probe and understanding how — by integrating Anthropic's Assistant Axis research into Garak vulnerability scanning.
 - [Red Teaming on a Budget: Garak + Ollama + AMD RDNA2](https://maravexa.com/blog/garak-ollama-rdna2/): A practical guide to LLM vulnerability scanning with Garak and Ollama on AMD hardware with ROCm 6.3 — because constraint is the mother of flexibility.
 - [The Map Is Not The Treasure: A Field Guide to Wealth You Can Actually Use](https://maravexa.com/blog/real-wealth/): Money is a map, not the territory — and we've been navigating by a map that's missing half the math. A field guide to wealth, illth, and why the tokens are imaginary.
 - [Open Brain Surgery: A Guide to API Shimming in Production](https://maravexa.com/blog/api-shim/): How a corrupted artifact server, a broken backup, an incompatible API, and a ticking clock forced an emergency production migration — and why a 400-line FastAPI shim was the right tool for the job.
