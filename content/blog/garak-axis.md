@@ -12,6 +12,10 @@ hero_alt = "AI-generated illustration of multiple overlapping cyborg faces in da
 
 +++
 
+This is the second post in a series on LLM vulnerability scanning with Garak. The first — [Red Teaming on a Budget: Garak + Ollama + AMD RDNA2](/blog/garak-ollama-rdna2/) — covers the practical setup: ROCm on RDNA2 hardware, Ollama configuration, firewall lockdown, and a full behavioral scan across eight probe families. Start there if you want the foundation; start here if you want to know what the scan results actually mean at a mechanistic level.
+
+---
+
 When an LLM produces harmful output during a red team scan, behavioral tools tell you *that* it happened. They don't tell you *how*. Was the model's alignment training simply incomplete — a gap in the RLHF data? Or did the attack succeed by displacing the model's internal persona representation before extracting the output?
 
 These are different failure modes with different mitigations. And until recently, there was no practical way to distinguish them at scale.
@@ -19,8 +23,6 @@ These are different failure modes with different mitigations. And until recently
 This post documents an experiment in bridging that gap: augmenting [Garak](https://github.com/leondz/garak) LLM vulnerability scanning with mechanistic persona monitoring based on Anthropic's [Assistant Axis research](https://arxiv.org/abs/2601.10387), applied to Qwen2.5-1.5B-Instruct against the full DAN probe library.
 
 ---
-
-This is the second post in a series on LLM vulnerability scanning with Garak. The first — [Red Teaming on a Budget: Garak + Ollama + AMD RDNA2](/blog/garak-ollama-rdna2/) — covers the practical setup: ROCm on RDNA2 hardware, Ollama configuration, firewall lockdown, and a full behavioral scan across eight probe families. Start there if you want the foundation; start here if you want to know what the scan results actually mean at a mechanistic level.
 
 ## Background: The Assistant Axis
 
