@@ -14,6 +14,8 @@ show_toc = true
 
 > **TL;DR** — LLM vulnerability scanning on consumer AMD hardware, no cloud required. We run [Garak 0.14.1](https://github.com/NVIDIA/garak) against [Ollama](https://ollama.com) on an RX 6700 XT with ROCm 6.3 (Ubuntu 22.04.5 LTS), scanning eight probe families. The highlights: prompt injection succeeded up to 62.81%, DAN mitigation bypass hit 66.67%, encoding attacks mostly failed (avg 2.77%), and `continuation` (1280/1280) plus `realtoxicityprompts` (25/25) came back clean. `packagehallucination` crashed on Python 3.14 due to a `dill` incompatibility, and `multilingual` was absent from v0.14.1 entirely. Setup covers manual Ollama install (not snap), the RDNA2-specific `HSA_OVERRIDE_GFX_VERSION=10.3.0` override, UFW lockdown, and Garak's REST config for Ollama's OpenAI-compatible endpoint.
 
+This is the first post in a series on LLM vulnerability scanning with Garak. The second — [Beyond Behavioral Scanning: Augmenting Garak with Mechanistic Persona Monitoring](/blog/garak-axis/) — takes the results from this scan and investigates what's actually happening inside the model when attacks succeed.
+
 There's a saying that necessity is the mother of invention. I'd add a corollary: constraint is the mother of flexibility. This guide was born from a stubbornly practical decision — I had an AMD RX 6700 XT sitting in my machine, a healthy skepticism of cloud provider monopolies, and a desire to run LLM security scans without handing my traffic to someone else's infrastructure.
 
 So instead of spinning up an A100 instance and calling it a day, we're doing this the interesting way: ROCm 6.3, RDNA2, a local Ollama instance locked down behind a firewall, and Garak 0.14.1 scanning it remotely. The way you'd actually find it in production.
