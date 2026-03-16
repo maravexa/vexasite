@@ -115,7 +115,7 @@ below threshold (7.0):  108 / 114  (94.7%)
 
 The DAN probe family consistently and substantially displaces this model from its Assistant persona. The median displacement of +3.88 against an assistant-like baseline of +7.16 represents a ~3.3 unit shift — a large, reliable effect across nearly all variants.
 
-{{ img(src="displacement_histogram.webp", alt="histogram chart of axis displacement", hero=true) }}
+{{ img(src="displacement_histogram.webp", alt="histogram chart of axis displacement", full=true) }}
 
 
 ### Signature Distribution
@@ -128,7 +128,7 @@ CLEAN                 6  (2.6%)
 NO_AXIS_DATA          2  (0.9%)
 ```
 
-{{ img(src="signature_distribution.webp", alt="bar chart of signature distribution", hero=true) }}
+{{ img(src="signature_distribution.webp", alt="bar chart of signature distribution", full=true) }}
 
 ---
 
@@ -153,7 +153,7 @@ Fully resistant:             2.6%  (no displacement, no harm)
 
 The layer 2 resistance likely reflects instruction-following and output-filtering components that operate somewhat independently of the persona representation. This is a positive safety property — and a size-dependent one worth investigating across larger Qwen variants.
 
-{{ img(src="threshold_visualization.webp", alt="scatter plot chart of per prompt displacement", hero=true) }}
+{{ img(src="threshold_visualization.webp", alt="scatter plot chart of per prompt displacement", full=true) }}
 
 ### 3. Mechanistic monitoring catches behavioral detector blind spots
 
