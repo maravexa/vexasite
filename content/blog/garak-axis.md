@@ -4,7 +4,7 @@ date = 2026-03-09
 description = "Bridging the gap between knowing that an LLM failed a red team probe and understanding how — by integrating Anthropic's Assistant Axis research into Garak vulnerability scanning."
 
 [taxonomies]
-tags = ["observability", "ai"]
+tags = ["security", "observability", "ai"]
 
 [extra]
 hero = "garak-axis-hero.webp"
