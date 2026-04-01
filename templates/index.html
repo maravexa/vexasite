@@ -18,15 +18,10 @@
   <ul class="post-list">
     {% for page in blog.pages | slice(end=5) %}
     <li>
-      <div class="post-list-text">
-        <a href="{{ page.permalink }}">{{ page.title }}</a>
-        <span class="post-meta"><time datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format="%B %-d, %Y") }}</time>{% if page.taxonomies.tags %} {% for tag in page.taxonomies.tags %}<a href="/tags/{{ tag | slugify }}/" class="post-tag">#{{ tag }}</a>{% if not loop.last %} {% endif %}{% endfor %}{% endif %}</span>
-        {% if page.description %}
-        <p>{{ page.description }}</p>
-        {% endif %}
-      </div>
-      {% if page.extra.hero %}
-      <img class="post-list-img" src="/img/{{ page.extra.hero }}" alt="{{ page.extra.hero_alt | default(value='') }}" width="320" loading="lazy">
+      <a href="{{ page.permalink }}">{{ page.title }}</a>
+      <span class="post-meta"><time datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format="%B %-d, %Y") }}</time>{% if page.taxonomies.tags %} {% for tag in page.taxonomies.tags %}<a href="/tags/{{ tag | slugify }}/" class="post-tag">#{{ tag }}</a>{% if not loop.last %} {% endif %}{% endfor %}{% endif %}</span>
+      {% if page.description %}
+      <p>{{ page.description }}</p>
       {% endif %}
     </li>
     {% endfor %}

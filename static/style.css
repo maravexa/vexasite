@@ -340,42 +340,6 @@ th {
 
 .post-list li:last-child { border-bottom: none; }
 
-/* On wide screens, expand list to full site width with image column */
-@media (min-width: 860px) {
-  .post-list {
-    max-width: none;
-  }
-
-  .post-list li {
-    display: grid;
-    grid-template-columns: 1fr var(--img-col);
-    column-gap: var(--gap);
-    align-items: start;
-  }
-
-  .post-list li:not(:has(.post-list-img)) {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Post list thumbnail image */
-.post-list-img {
-  display: none;
-}
-
-@media (min-width: 860px) {
-  .post-list-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    margin-top: 0.25rem;
-  }
-}
-
 
 .post-list time {
   font-size: 0.78rem;
