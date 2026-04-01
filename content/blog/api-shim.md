@@ -8,7 +8,7 @@ tags = ["ops"]
 
 [extra]
 hero = "api-shim-hero.webp"
-hero_alt = "Dark cyberpunk datacenter with purpe and cyan color scheme"
+hero_alt = "Dark cyberpunk datacenter with purple and cyan color scheme"
 +++
 
 **TL;DR:** Our artifact server's filesystem corrupted, the snapshot backup turned out to have a silently broken binary, and the replacement server spoke an incompatible API. With production rebuilds failing and a week until the next release window, I wrote a 400-line FastAPI shim that sat on the old server's DNS, translated requests between the two API formats in both directions, and bought us nine clean days until the proper migration shipped.
