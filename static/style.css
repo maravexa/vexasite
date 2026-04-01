@@ -340,6 +340,44 @@ th {
 
 .post-list li:last-child { border-bottom: none; }
 
+/* Post list thumbnail — hidden on small screens */
+.post-list-img {
+  display: none;
+}
+
+/* On wide screens: expand list into right column, show thumbnail */
+@media (min-width: 860px) {
+  .post-list {
+    max-width: calc(var(--max-w) + var(--img-col) + var(--gap));
+  }
+
+  .post-list li {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--gap);
+  }
+
+  .post-list-text {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: var(--max-w);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .post-list-img {
+    display: block;
+    flex: 0 0 var(--img-col);
+    width: var(--img-col);
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+}
+
 
 .post-list time {
   font-size: 0.78rem;
