@@ -6,6 +6,9 @@ Mara Vexa is a security, observability, and automation engineer exploring the in
 
 ## Blog Posts
 
+- [The Satisfaction Paradox: On AI Editing, Ruskin's Illth, and the Writing That Feels Like Yours Until It Isn't](https://maravexa.com/blog/satisfaction-paradox/): A paper revealed that LLM editing neutralizes your stance while making you feel more satisfied. Explored through Ruskin's wealth/illth framework, with practical techniques to keep AI as a lever instead of a crutch.
+- [Crutches and Levers: How to Actually Get Better With AI](https://maravexa.com/blog/crutches-levers/): AI coding agents let me ship projects I didn't understand. The uncomfortable process of fixing that turned out to be the point.
+- [Indirect Observability: Monitoring AI Systems That Know They're Being Watched](https://maravexa.com/blog/indirect-observability/): When AI systems learn to game direct evaluation, observability must shift from watching outputs to reading side-channels. A framework for monitoring systems that resist observation.
 - [Beyond Behavioral Scanning: Augmenting Garak with Mechanistic Persona Monitoring](https://maravexa.com/blog/garak-axis/): Bridging the gap between knowing that an LLM failed a red team probe and understanding how — by integrating Anthropic's Assistant Axis research into Garak vulnerability scanning.
 - [Red Teaming on a Budget: Garak + Ollama + AMD RDNA2](https://maravexa.com/blog/garak-ollama-rdna2/): A practical guide to LLM vulnerability scanning with Garak and Ollama on AMD hardware with ROCm 6.3 — because constraint is the mother of flexibility.
 - [The Map Is Not The Treasure: A Field Guide to Wealth You Can Actually Use](https://maravexa.com/blog/real-wealth/): Money is a map, not the territory — and we've been navigating by a map that's missing half the math. A field guide to wealth, illth, and why the tokens are imaginary.
