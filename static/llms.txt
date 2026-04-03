@@ -6,6 +6,7 @@ Mara Vexa is a security, observability, and automation engineer exploring the in
 
 ## Blog Posts
 
+- [KISS the Ring: Building a Prometheus Exporter for Network Inventory](https://maravexa.com/blog/signet-exporter/): Why I built a single-binary Prometheus exporter for network inventory instead of deploying another IPAM server — and how constraint, Go, and an existing monitoring stack got me further than any purpose-built solution.
 - [The Satisfaction Paradox: On AI Editing, Ruskin's Illth, and the Writing That Feels Like Yours Until It Isn't](https://maravexa.com/blog/satisfaction-paradox/): A paper revealed that LLM editing neutralizes your stance while making you feel more satisfied. Explored through Ruskin's wealth/illth framework, with practical techniques to keep AI as a lever instead of a crutch.
 - [Crutches and Levers: How to Actually Get Better With AI](https://maravexa.com/blog/crutches-levers/): AI coding agents let me ship projects I didn't understand. The uncomfortable process of fixing that turned out to be the point.
 - [Indirect Observability: Monitoring AI Systems That Know They're Being Watched](https://maravexa.com/blog/indirect-observability/): When AI systems learn to game direct evaluation, observability must shift from watching outputs to reading side-channels. A framework for monitoring systems that resist observation.
