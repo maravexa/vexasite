@@ -79,28 +79,28 @@ It's available on the **AUR** (`yay -S hyprsaver`) and **crates.io** (`cargo ins
 
 Every release I told myself "this time I'll make the animated gifs for the README." Every release I instead spent that time on a new shader or feature. The gif backlog became a running joke across my build threads. So for v0.4.4 I finally solved it the engineer way: I shipped an animated gif maker as a built-in subcommand. `hyprsaver gif --shader aurora --palette frost` renders the shader offscreen and spits out a gif. No more excuses — and now every user can generate their own favorite combo gifs too.
 
-{{ img(src="hyprsaver_wormhole.webp", alt="Curved raymarched tunnel in pink, white, and orange", full=true) }}
+{{ img(src="hyprsaver-wormhole.webp", alt="Curved raymarched tunnel in pink, white, and orange", full=true) }}
 `wormhole × sappho` — The shader that took three sprints to build. Curved raymarched tunnel.
 
-{{ img(src="hyprsaver_kaleidoscope.webp", alt="Classic kaleidoscope in vibrant rainbow colors", full=true) }}
+{{ img(src="hyprsaver-kaleidoscope.webp", alt="Classic kaleidoscope in vibrant rainbow colors", full=true) }}
 `kaleidoscope × rainbow` — Classic kaleidoscope in vibrant rainbow colors.
 
-{{ img(src="hyprsaver_aurora.webp", alt="Domain-warped curtains of light in classic aurora colors", full=true) }}
+{{ img(src="hyprsaver-aurora.webp", alt="Domain-warped curtains of light in classic aurora colors", full=true) }}
 `aurora × aurora` — Domain-warped curtains of light in classic aurora colors.
 
-{{ img(src="hyprsaver_flames.webp", alt="Fractal fire licking upward with warm oranges and deep reds", full=true) }}
+{{ img(src="hyprsaver-flames.webp", alt="Fractal fire licking upward with warm oranges and deep reds", full=true) }}
 `flames × ember` — Fractal fire licking upward with warm oranges and deep reds.
 
-{{ img(src="hyprsaver_blob.webp", alt="pulsing raymarched sphere with glowing veins, in blue and green colors", full=true) }}
+{{ img(src="hyprsaver-blob.webp", alt="pulsing raymarched sphere with glowing veins, in blue and green colors", full=true) }}
 `blob × achilles` — A pulsing raymarched sphere with glowing veins, in blue and green colors.
 
-{{ img(src="hyprsaver_starfield.webp", alt="classic hyperspace screensaver in monochrome", full=true) }}
+{{ img(src="hyprsaver-starfield.webp", alt="classic hyperspace screensaver in monochrome", full=true) }}
 `starfield × monochrome` — A classic hyperspace screensaver in monochrome.
 
-{{ img(src="hyprsaver_temple.webp", alt="90s geometric inspired endless temple in magenta and cyan", full=true) }}
+{{ img(src="hyprsaver-temple.webp", alt="90s geometric inspired endless temple in magenta and cyan", full=true) }}
 `temple × vapor` — A 90s geometric inspired endless temple in magenta and cyan.
 
-{{ img(src="hyprsaver_oscilloscope.webp", alt="Oscilloscope display with vignette in green", full=true) }}
+{{ img(src="hyprsaver-oscilloscope.webp", alt="Oscilloscope display with vignette in green", full=true) }}
 `oscilloscope × forest` — Classic Oscilloscope display with vignette in green.
 
 ---
